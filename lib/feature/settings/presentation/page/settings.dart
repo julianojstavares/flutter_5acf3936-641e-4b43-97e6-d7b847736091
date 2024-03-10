@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/content_widget.dart';
+import '../widgets/footer_widget.dart';
 import '../widgets/header_widget.dart';
 import '../widgets/settings_page_appbar.dart';
 
@@ -12,11 +14,22 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: SettingsPageAppBar(),
-      body: Column(
-        children: [
-          HeaderWidget(),
-        ],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              HeaderWidget(),
+              Divider(),
+              ContentWidget(),
+              SizedBox(height: 50),
+              FooterWidget(),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+
+

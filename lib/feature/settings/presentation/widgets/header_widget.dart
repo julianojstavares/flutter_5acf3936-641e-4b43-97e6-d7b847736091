@@ -8,32 +8,37 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AutoSizeText("Apelido"),
-              TextField(),
-            ],
+    return Container(
+      color: Colors.amber,
+      height: 100,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AutoSizeText("Apelido"),
+                TextField(),
+              ],
+            ),
           ),
-        ),
-        Container(
-          color: Colors.grey,
-          child: Row(
-            children: [
-              const CircleAvatar(
-                foregroundImage: AssetImage("assets/images/profile.png"),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const AutoSizeText("Editar Foto"),
-              ),
-            ],
+          Container(
+            color: Colors.grey,
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  foregroundImage: AssetImage("assets/images/profile.png"),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const AutoSizeText("Editar Foto"),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
