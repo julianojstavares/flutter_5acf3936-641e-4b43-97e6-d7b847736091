@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/header_widget.dart';
+
 @RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -28,45 +30,10 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: const Column(
-        children: [HeaderWidget()],
+        children: [
+          HeaderWidget(),
+        ],
       ),
-    );
-  }
-}
-
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AutoSizeText("Apelido"),
-              TextField(),
-            ],
-          ),
-        ),
-        Container(
-          color: Colors.grey,
-          child: Row(
-            children: [
-              const CircleAvatar(
-                foregroundImage: AssetImage("assets/images/profile.png"),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const AutoSizeText("Editar Foto"),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
