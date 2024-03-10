@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class SettingsPageAppBar extends StatelessWidget
     return AppBar(
       leadingWidth: 40,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () => context.popRoute(),
         icon: const Icon(
           Icons.arrow_back_ios_new,
           size: 15,
