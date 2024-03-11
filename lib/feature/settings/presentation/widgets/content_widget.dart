@@ -29,28 +29,28 @@ class ContentWidget extends StatelessWidget {
                 children: const [
                   ListItem(
                     title: "Super Feirão",
-                    startDate: "01/01/2021",
-                    endDate: "01/01/2022",
+                    startDate: "01/01/21",
+                    endDate: "01/01/22",
                   ),
                   ListItem(
                     title: "Super Feirão",
-                    startDate: "01/01/2021",
-                    endDate: "01/01/2022",
+                    startDate: "01/01/21",
+                    endDate: "01/01/22",
                   ),
                   ListItem(
                     title: "Super Feirão",
-                    startDate: "01/01/2021",
-                    endDate: "01/01/2022",
+                    startDate: "01/01/21",
+                    endDate: "01/01/22",
                   ),
                   ListItem(
                     title: "Super Feirão",
-                    startDate: "01/01/2021",
-                    endDate: "01/01/2022",
+                    startDate: "01/01/21",
+                    endDate: "01/01/22",
                   ),
                   ListItem(
                     title: "Super Feirão",
-                    startDate: "01/01/2021",
-                    endDate: "01/01/2022",
+                    startDate: "01/01/21",
+                    endDate: "01/01/22",
                   ),
                 ],
               ),
