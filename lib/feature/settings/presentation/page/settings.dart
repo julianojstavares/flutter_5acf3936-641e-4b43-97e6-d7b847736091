@@ -31,6 +31,7 @@ class SettingsPage extends StatelessWidget {
                     builder: (context) => PeriodPopUp(
                       dialogCubit: dialogCubit,
                     ),
+                    barrierDismissible: false,
                   );
                 }
               },
