@@ -51,7 +51,10 @@ class HeaderWidget extends StatelessWidget {
                   style: const ButtonStyle(
                     foregroundColor: MaterialStatePropertyAll(Colors.black),
                   ),
-                  child: const AutoSizeText("Editar Foto"),
+                  child: const AutoSizeText(
+                    "Editar Foto",
+                    style: TextStyle(fontSize: 11),
+                  ),
                 ),
               ),
             ],
