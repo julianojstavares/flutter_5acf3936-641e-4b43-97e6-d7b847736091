@@ -33,12 +33,27 @@ class ListItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AutoSizeText(title),
+          AutoSizeText(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
           Row(
             children: [
-              AutoSizeText(startDate),
-              const AutoSizeText(" a "),
-              AutoSizeText(endDate),
+              AutoSizeText(
+                startDate,
+                style: const TextStyle(fontSize: 11),
+              ),
+              const AutoSizeText(
+                " a ",
+                style: TextStyle(fontSize: 11),
+              ),
+              AutoSizeText(
+                endDate,
+                style: const TextStyle(fontSize: 11),
+              ),
             ],
           ),
         ],
