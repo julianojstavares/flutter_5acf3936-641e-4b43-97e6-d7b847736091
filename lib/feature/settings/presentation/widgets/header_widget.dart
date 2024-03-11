@@ -50,6 +50,7 @@ class HeaderWidget extends StatelessWidget {
                   onPressed: () {},
                   style: const ButtonStyle(
                     foregroundColor: MaterialStatePropertyAll(Colors.black),
+                    overlayColor: MaterialStatePropertyAll(Colors.blue),
                   ),
                   child: const AutoSizeText(
                     "Editar Foto",
