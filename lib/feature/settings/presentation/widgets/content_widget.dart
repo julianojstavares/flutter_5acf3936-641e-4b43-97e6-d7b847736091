@@ -13,10 +13,18 @@ class ContentWidget extends StatelessWidget {
     return Flexible(
       child: Column(
         children: [
-          const Row(
-            children: [
-              AutoSizeText("Períodos"),
-            ],
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                AutoSizeText(
+                  "Períodos",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
           Flexible(
             child: Container(
