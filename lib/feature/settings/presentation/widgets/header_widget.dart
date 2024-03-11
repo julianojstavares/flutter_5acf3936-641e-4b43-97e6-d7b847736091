@@ -8,37 +8,56 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      height: 100,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Flexible(
+    return Row(
+      children: [
+        const Flexible(
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AutoSizeText("Apelido"),
-                TextField(),
+                TextField(
+                  decoration: InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    isDense: true,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
               ],
             ),
           ),
-          Container(
-            color: Colors.grey,
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  foregroundImage: AssetImage("assets/images/profile.png"),
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(240, 240, 240, 1),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                foregroundImage: AssetImage("assets/images/profile.png"),
+                radius: 25,
+              ),
+              TextButton(
+                onPressed: () {},
+                style: const ButtonStyle(
+                  padding: MaterialStatePropertyAll(EdgeInsets.zero),
                 ),
-                TextButton(
+                child: TextButton(
                   onPressed: () {},
+                  style: const ButtonStyle(
+                    foregroundColor: MaterialStatePropertyAll(Colors.black),
+                  ),
                   child: const AutoSizeText("Editar Foto"),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
