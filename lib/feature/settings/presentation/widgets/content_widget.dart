@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../cubit/dialog_cubit.dart';
 import 'list_item.dart';
 
 class ContentWidget extends StatelessWidget {
@@ -69,7 +71,7 @@ class ContentWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FilledButton(
-                onPressed: () {},
+                onPressed: () => context.read<DialogCubit>().openDialog(),
                 style: const ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(
                     Color.fromRGBO(15, 39, 139, 1),
