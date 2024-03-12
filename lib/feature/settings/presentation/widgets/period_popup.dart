@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -53,8 +55,7 @@ class PeriodPopUp extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              dialogCubit.closeDialog();
-                              Navigator.of(context).pop();
+                              dialogCubit.closeDialog(context);
                             },
                             icon: const Icon(Icons.close),
                           ),
@@ -318,10 +319,12 @@ class PeriodPopUp extends StatelessWidget {
                       const SizedBox(height: 20),
                       FilledButton(
                         onPressed: () {
-                          _formKey.currentState?.validate();
-                          debugPrint(
-                            _formKey.currentState?.instantValue.toString(),
-                          );
+                          bool? isFormValid = _formKey.currentState?.validate();
+
+                          if (isFormValid!) {
+                            log(_formKey.currentState!.instantValue.toString());
+                            dialogCubit.closeDialog(context);
+                          }
                         },
                         style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(

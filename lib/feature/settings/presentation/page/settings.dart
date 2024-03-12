@@ -33,7 +33,7 @@ class SettingsPage extends StatelessWidget {
                     ),
                     barrierDismissible: false,
                   );
-                }
+                } 
               },
               child: const Column(
                 children: [
