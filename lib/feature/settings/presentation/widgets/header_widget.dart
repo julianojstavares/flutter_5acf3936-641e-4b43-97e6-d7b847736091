@@ -1,9 +1,9 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HeaderWidget extends StatefulWidget {
@@ -17,7 +17,7 @@ class HeaderWidget extends StatefulWidget {
 
 class _HeaderWidgetState extends State<HeaderWidget> {
   final ImagePicker imgPicker = ImagePicker();
-  XFile? imgLocal;
+  XFile? imgPicked;
 
   @override
   Widget build(BuildContext context) {
@@ -51,27 +51,37 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           child: Row(
             children: [
               CircleAvatar(
-                foregroundImage: imgLocal != null
-                    ? FileImage(File(imgLocal!.path)) as ImageProvider<Object>?
+                foregroundImage: imgPicked != null
+                    ? FileImage(File(imgPicked!.path)) as ImageProvider<Object>?
                     : const AssetImage("assets/images/profile.png"),
                 radius: 25,
               ),
               TextButton(
                 onPressed: () async {
-                  imgLocal = await imgPicker.pickImage(
+                  imgPicked = await imgPicker.pickImage(
                     source: ImageSource.gallery,
                   );
-                  Directory appDocDir =
-                      await getApplicationDocumentsDirectory();
-                  String appDocPath = appDocDir.path;
 
-                  String novoCaminho = '$appDocPath/${imgLocal!.name}';
+                  if (imgPicked == null) return;
 
-                  File imagemSelecionada = File(imgLocal!.path);
-                  await imagemSelecionada.copy(novoCaminho);
+                  final downloadsDir = await getDownloadsDirectory();
+                  final fileExtension = extension(imgPicked!.name);
 
-                  log(imgLocal?.path ?? "no image");
-                  log(novoCaminho);
+                  File tmpFile = File(imgPicked!.path);
+
+                  final newFilePath =
+                      "${downloadsDir!.path}/profile$fileExtension";
+
+                  final newFile = File(newFilePath);
+
+                  final alreadyFile = await newFile.exists();
+
+                  if (!alreadyFile) tmpFile.copy(newFilePath);
+
+                  if (alreadyFile) {
+                    await newFile.delete();
+                    tmpFile.copy(newFilePath);
+                  }
 
                   setState(() {});
                 },
