@@ -23,7 +23,7 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
-  
+
 
   @override
   Widget build(BuildContext context) {
