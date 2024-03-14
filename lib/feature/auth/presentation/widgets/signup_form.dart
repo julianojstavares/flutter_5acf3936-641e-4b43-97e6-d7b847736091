@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:frontend/core/dependency_injection/service_locator.dart';
+import 'package:frontend/feature/auth/presentation/bloc/signUp/signup_bloc.dart';
+import 'package:frontend/feature/auth/presentation/bloc/signUp/signup_event.dart';
 
 import '../cubit/view_cubit.dart';
 
@@ -19,6 +22,8 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormBuilderState>();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +76,18 @@ class _SignUpFormState extends State<SignUpForm> {
                 bool? isFormValid = _formKey.currentState?.validate();
 
                 if (isFormValid!) {
-                  log(_formKey.currentState!.instantValue.toString());
+                  _formKey.currentState!.save();
+                  final usrObj = _formKey.currentState!.value;
+
+                  log(name: "SignUpForm", "$usrObj");
+
+                  getIt.get<SignUpBloc>().add(
+                        SignUpUserCreated(
+                          username: usrObj["username"],
+                          email: usrObj["email"],
+                          password: usrObj["password"],
+                        ),
+                      );
                 }
               },
               child: const AutoSizeText("Criar"),

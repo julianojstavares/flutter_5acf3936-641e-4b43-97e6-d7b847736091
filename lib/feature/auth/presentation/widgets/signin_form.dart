@@ -49,7 +49,7 @@ class _SignInFormState extends State<SignInForm> {
                 bool? isFormValid = _formKey.currentState?.validate();
 
                 if (isFormValid!) {
-                  log(_formKey.currentState!.instantValue.toString());
+                  log(name:"SignInForm", _formKey.currentState!.instantValue.toString());
                 }
               },
               child: const AutoSizeText("Entrar"),
