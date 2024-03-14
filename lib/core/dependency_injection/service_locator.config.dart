@@ -15,7 +15,7 @@ import '../../feature/auth/data/datasources/auth_source_hive.dart' as _i3;
 import '../../feature/auth/data/repositories/auth_repository.dart' as _i5;
 import '../../feature/auth/domain/repositories/iauth_repository.dart' as _i4;
 import '../../feature/auth/domain/use_cases/signup_usecase.dart' as _i6;
-import '../../feature/auth/presentation/bloc/signUp/signup_bloc.dart' as _i7;
+import '../../feature/auth/presentation/bloc/sign_up/signup_bloc.dart' as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

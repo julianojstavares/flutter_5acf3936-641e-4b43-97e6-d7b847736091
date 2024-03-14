@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:frontend/core/dependency_injection/service_locator.dart';
-import 'package:frontend/feature/auth/presentation/bloc/signUp/signup_bloc.dart';
-import 'package:frontend/feature/auth/presentation/bloc/signUp/signup_event.dart';
+import 'package:frontend/feature/auth/presentation/bloc/sign_up/signup_bloc.dart';
+import 'package:frontend/feature/auth/presentation/bloc/sign_up/signup_event.dart';
 
 import '../cubit/view_cubit.dart';
 
