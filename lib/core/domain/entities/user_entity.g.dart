@@ -6,17 +6,17 @@ part of 'user_entity.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class UserEntityAdapter extends TypeAdapter<UserEntity> {
   @override
   final int typeId = 0;
 
   @override
-  User read(BinaryReader reader) {
+  UserEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return UserEntity(
       fields[0] as String,
       fields[1] as String,
       fields[3] as String,
@@ -27,7 +27,7 @@ class UserAdapter extends TypeAdapter<User> {
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, UserEntity obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -50,7 +50,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is UserEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

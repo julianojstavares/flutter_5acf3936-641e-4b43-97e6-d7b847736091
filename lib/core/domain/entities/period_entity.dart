@@ -1,11 +1,9 @@
-
-
 import 'package:hive/hive.dart';
 
 part 'period_entity.g.dart';
 
 @HiveType(typeId: 1)
-class Period extends HiveObject {
+class PeriodEntity extends HiveObject {
   @HiveField(0)
   String id;
 
@@ -30,5 +28,6 @@ class Period extends HiveObject {
   @HiveField(7)
   int goal2;
 
-  Period(this.id, this.userID, this.title, this.startDate, this.endDate, this.category, this.goal1, this.goal2);
+  PeriodEntity(this.id, this.userID, this.title, this.startDate, this.endDate,
+      this.category, this.goal1, this.goal2);
 }

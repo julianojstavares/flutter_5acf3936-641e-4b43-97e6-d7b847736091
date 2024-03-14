@@ -6,17 +6,17 @@ part of 'period_entity.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class PeriodAdapter extends TypeAdapter<Period> {
+class PeriodEntityAdapter extends TypeAdapter<PeriodEntity> {
   @override
   final int typeId = 1;
 
   @override
-  Period read(BinaryReader reader) {
+  PeriodEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Period(
+    return PeriodEntity(
       fields[0] as String,
       fields[1] as String,
       fields[2] as String,
@@ -29,7 +29,7 @@ class PeriodAdapter extends TypeAdapter<Period> {
   }
 
   @override
-  void write(BinaryWriter writer, Period obj) {
+  void write(BinaryWriter writer, PeriodEntity obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)
@@ -56,7 +56,7 @@ class PeriodAdapter extends TypeAdapter<Period> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PeriodAdapter &&
+      other is PeriodEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

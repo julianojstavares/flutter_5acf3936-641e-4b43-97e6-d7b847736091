@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'user_entity.g.dart';
 
 @HiveType(typeId: 0)
-class User extends HiveObject {
+class UserEntity extends HiveObject {
   @HiveField(0)
   String id;
 
@@ -22,5 +22,6 @@ class User extends HiveObject {
   @HiveField(5)
   List<String> periods;
 
-  User(this.id, this.username, this.password, {this.nickname, this.imgProfilePath, required this.periods});
+  UserEntity(this.id, this.username, this.password,
+      {this.nickname, this.imgProfilePath, required this.periods});
 }
