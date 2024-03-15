@@ -15,4 +15,14 @@ class AuthRepository implements IAuthRepository {
   Future<void> signUp(UserEntity user) async {
     _hiveSource.createUser(user);
   }
+
+  @override
+  Future<void> clearData() async {
+    _hiveSource.clearData();
+  }
+
+  @override
+  Future<void> signIn(String username, String password) async {
+    _hiveSource.validateInput(username, password);
+  }
 }

@@ -49,6 +49,7 @@ class SignUpFormBuilder extends StatelessWidget {
                 const SizedBox(height: 10),
                 FilledButton(
                   onPressed: () {
+                    signUpBloc.add(SignUpRetried());
                     context.read<ViewCubit>().initial();
                   },
                   child: const AutoSizeText("Voltar"),

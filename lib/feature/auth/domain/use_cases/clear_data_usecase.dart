@@ -1,17 +1,16 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/domain/entities/user_entity.dart';
 import '../repositories/iauth_repository.dart';
 
 @injectable
-class SignUpUseCase {
+class ClearDataUseCase {
   final IAuthRepository _authRepository;
 
-  SignUpUseCase({
+  ClearDataUseCase({
     required IAuthRepository authRepository,
   }) : _authRepository = authRepository;
 
-  Future<void> call({required UserEntity user}) async {
-    await _authRepository.signUp(user);
+  Future<void> call() async {
+    await _authRepository.clearData();
   }
 }
