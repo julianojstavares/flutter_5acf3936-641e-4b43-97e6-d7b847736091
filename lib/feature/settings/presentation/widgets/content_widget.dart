@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend/feature/settings/presentation/widgets/periods_list_builder.dart';
 
 import '../cubit/dialog_cubit.dart';
+import '../cubit/period_popup_cubit/period_popup_cubit.dart';
+import 'periods_list_builder.dart';
 
 class ContentWidget extends StatelessWidget {
   const ContentWidget({
@@ -45,7 +46,10 @@ class ContentWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FilledButton(
-                onPressed: () => context.read<DialogCubit>().openDialog(),
+                onPressed: () {
+                  context.read<DialogCubit>().openDialog();
+                  context.read<PeriodPopUpCubit>().showCreateState();
+                },
                 style: const ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(
                     Color.fromRGBO(15, 39, 139, 1),

@@ -37,4 +37,11 @@ class SettingsSourceHive {
     final usersDB = Hive.box<UserEntity>("users");
     usersDB.put(user.id, user);
   }
+
+  PeriodEntity? readOnePeriod(String periodID) {
+    final periodsDB = Hive.box<PeriodEntity>("periods");
+    final period = periodsDB.get(periodID);
+
+    return period;
+  }
 }

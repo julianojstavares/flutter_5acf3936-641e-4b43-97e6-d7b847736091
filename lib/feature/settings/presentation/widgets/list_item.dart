@@ -1,9 +1,11 @@
-import 'dart:developer';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/core/domain/entities/period_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../core/domain/entities/period_entity.dart';
+import '../cubit/dialog_cubit.dart';
+import '../cubit/period_popup_cubit/period_popup_cubit.dart';
 
 class ListItem extends StatelessWidget {
   final PeriodEntity period;
@@ -35,7 +37,8 @@ class ListItem extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        log(name: "ListItem", period.id);
+        context.read<DialogCubit>().openDialog();
+        context.read<PeriodPopUpCubit>().showEditState(period);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,7 +1,7 @@
 sealed class ReadOnePeriodEvent {}
 
 final class OnePeriodReaded extends ReadOnePeriodEvent {
-  final String userID;
+  final String periodID;
 
-  OnePeriodReaded({required this.userID});
+  OnePeriodReaded({required this.periodID});
 }

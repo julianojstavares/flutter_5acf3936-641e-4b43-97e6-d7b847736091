@@ -1,26 +1,35 @@
-// @lazySingleton
-// class ReadOnePeriodBloc extends Bloc<ReadOnePeriodEvent, ReadOnePeriodState> {
-//   final ReadOnePeriodUseCase _readOnePeriodUseCase;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
-//   ReadOnePeriodBloc({required ReadOnePeriodUseCase readOnePeriodUseCase})
-//       : _readOnePeriodUseCase = readOnePeriodUseCase,
-//         super(ReadOnePeriodLoading()) {
-//     on<OnePeriodReaded>(_onOnePeriodReaded);
-//   }
+import '../../../../../core/domain/entities/period_entity.dart';
+import '../../../domain/use_cases/read_one_period_use_case.dart';
+import 'read_one_period_event.dart';
+import 'read_one_period_state.dart';
 
-//   void _onOnePeriodReaded(
-//     OnePeriodReaded event,
-//     Emitter<ReadOnePeriodState> emit,
-//   ) async {
-//     final List<PeriodEntity> periods;
+@lazySingleton
+class ReadOnePeriodBloc extends Bloc<ReadOnePeriodEvent, ReadOnePeriodState> {
+  final ReadOnePeriodUseCase _readOnePeriodUseCase;
 
-//     try {
-//       periods = await _readOnePeriodUseCase.call(userID: event.userID);
-//     } catch (e) {
-//       emit(ReadOnePeriodError(message: "$e"));
-//       return;
-//     }
+  ReadOnePeriodBloc({required ReadOnePeriodUseCase readOnePeriodUseCase})
+      : _readOnePeriodUseCase = readOnePeriodUseCase,
+        super(ReadOnePeriodLoading()) {
+    on<OnePeriodReaded>(_onOnePeriodReaded);
+  }
 
-//     emit(ReadOnePeriodSuccess(periods: periods));
-//   }
-// }
+  void _onOnePeriodReaded(
+    OnePeriodReaded event,
+    Emitter<ReadOnePeriodState> emit,
+  ) async {
+    late final PeriodEntity? period;
+
+    try {
+      period = await _readOnePeriodUseCase.call(periodID: event.periodID);
+      if (period == null) throw Exception("Período não encontrado");
+    } catch (e) {
+      emit(ReadOnePeriodError(message: "$e"));
+      return;
+    }
+
+    emit(ReadOnePeriodSuccess(period: period));
+  }
+}

@@ -39,7 +39,7 @@ class SettingsRepository implements ISettingsRepository {
   }
   
   @override
-  Future<PeriodEntity> readOnePeriod(String userID) {
-    throw UnimplementedError();
+  Future<PeriodEntity?> readOnePeriod(String periodID) async {
+    return _hiveSource.readOnePeriod(periodID);
   }
 }

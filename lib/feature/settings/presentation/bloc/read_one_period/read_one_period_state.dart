@@ -11,7 +11,7 @@ final class ReadOnePeriodError extends ReadOnePeriodState {
 }
 
 final class ReadOnePeriodSuccess extends ReadOnePeriodState {
-  final List<PeriodEntity> periods;
+  final PeriodEntity period;
 
-  ReadOnePeriodSuccess({required this.periods});
+  ReadOnePeriodSuccess({required this.period});
 }
