@@ -1,20 +1,25 @@
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/core/domain/entities/period_entity.dart';
+import 'package:intl/intl.dart';
 
 class ListItem extends StatelessWidget {
-  final String title;
-  final String startDate;
-  final String endDate;
+  final PeriodEntity period;
 
   const ListItem({
     super.key,
-    required this.title,
-    required this.startDate,
-    required this.endDate,
+    required this.period,
   });
 
   @override
   Widget build(BuildContext context) {
+    final title = period.title;
+    final datePattern = DateFormat('dd/MM/yy');
+    final startDate = datePattern.format(period.startDate);
+    final endDate = datePattern.format(period.endDate);
+
     return FilledButton(
       style: const ButtonStyle(
         padding: MaterialStatePropertyAll(
@@ -29,7 +34,9 @@ class ListItem extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        log(name: "ListItem", period.id);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

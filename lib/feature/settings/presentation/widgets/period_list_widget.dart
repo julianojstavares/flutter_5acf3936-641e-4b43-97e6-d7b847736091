@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/domain/entities/period_entity.dart';
 import 'list_item.dart';
@@ -26,18 +25,7 @@ class PeriodListWidget extends StatelessWidget {
         itemCount: periods.length,
         itemBuilder: (context, index) {
           final item = periods[index];
-          final title = item.title;
-
-          final datePattern = DateFormat('dd/MM/yy');
-
-          final startDate = datePattern.format(item.startDate);
-          final endDate = datePattern.format(item.endDate);
-
-          return ListItem(
-            title: title,
-            startDate: startDate,
-            endDate: endDate,
-          );
+          return ListItem(period: item);
         },
       ),
     );

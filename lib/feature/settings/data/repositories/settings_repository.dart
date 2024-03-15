@@ -37,4 +37,9 @@ class SettingsRepository implements ISettingsRepository {
   Future<void> updateUser(UserEntity userUpdated) async {
     _hiveSource.updateUser(userUpdated);
   }
+  
+  @override
+  Future<PeriodEntity> readOnePeriod(String userID) {
+    throw UnimplementedError();
+  }
 }

@@ -12,7 +12,7 @@ class ReadPeriodsBloc extends Bloc<ReadPeriodsEvent, ReadPeriodsState> {
 
   ReadPeriodsBloc({required ReadPeriodsUseCase readPeriodsUseCase})
       : _readPeriodsUseCase = readPeriodsUseCase,
-        super(ReadPeriodLoading()) {
+        super(ReadPeriodsLoading()) {
     on<PeriodsReaded>(_onPeriodsReaded);
   }
 
@@ -25,10 +25,10 @@ class ReadPeriodsBloc extends Bloc<ReadPeriodsEvent, ReadPeriodsState> {
     try {
       periods = await _readPeriodsUseCase.call(userID: event.userID);
     } catch (e) {
-      emit(ReadPeriodError(message: "$e"));
+      emit(ReadPeriodsError(message: "$e"));
       return;
     }
 
-    emit(ReadPeriodSuccess(periods: periods));
+    emit(ReadPeriodsSuccess(periods: periods));
   }
 }

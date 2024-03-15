@@ -31,11 +31,11 @@ class _PeriodsListBuilderState extends State<PeriodsListBuilder> {
     return BlocBuilder<ReadPeriodsBloc, ReadPeriodsState>(
       bloc: readPeriodsBloc,
       builder: (context, state) => switch (state) {
-        ReadPeriodLoading() => const Center(
+        ReadPeriodsLoading() => const Center(
             child: CircularProgressIndicator(),
           ),
-        ReadPeriodError() => Center(child: AutoSizeText(state.message)),
-        ReadPeriodSuccess() => PeriodListWidget(periods: state.periods),
+        ReadPeriodsError() => Center(child: AutoSizeText(state.message)),
+        ReadPeriodsSuccess() => PeriodListWidget(periods: state.periods),
       },
     );
   }
