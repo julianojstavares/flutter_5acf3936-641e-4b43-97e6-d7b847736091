@@ -23,8 +23,8 @@ class PeriodEntityAdapter extends TypeAdapter<PeriodEntity> {
       fields[3] as DateTime,
       fields[4] as DateTime,
       fields[5] as String,
-      fields[6] as int,
-      fields[7] as int,
+      fields[6] as double,
+      fields[7] as double,
     );
   }
 

@@ -23,10 +23,10 @@ class PeriodEntity extends HiveObject {
   String category;
 
   @HiveField(6)
-  int goal1;
+  double goal1;
 
   @HiveField(7)
-  int goal2;
+  double goal2;
 
   PeriodEntity(this.id, this.userID, this.title, this.startDate, this.endDate,
       this.category, this.goal1, this.goal2);

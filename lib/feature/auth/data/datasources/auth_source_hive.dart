@@ -45,21 +45,4 @@ class AuthSourceHive {
 
     return user;
   }
-
-  void createPeriod(PeriodEntity period) {
-    final periodsDB = Hive.box<PeriodEntity>("periods");
-    periodsDB.put(period.id, period);
-  }
-
-  List<PeriodEntity> returnUserPeriods(String userID) {
-    final periodsDB = Hive.box<PeriodEntity>("periods");
-
-    final periods = periodsDB.values
-        .where(
-          (period) => period.userID == userID,
-        )
-        .toList();
-
-    return periods;
-  }
 }
