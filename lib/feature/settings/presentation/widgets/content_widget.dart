@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/feature/settings/presentation/widgets/periods_list_builder.dart';
 
 import '../cubit/dialog_cubit.dart';
-import 'list_item.dart';
 
 class ContentWidget extends StatelessWidget {
   const ContentWidget({
@@ -34,36 +34,7 @@ class ContentWidget extends StatelessWidget {
                 color: const Color.fromRGBO(245, 246, 250, 1),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: const [
-                  ListItem(
-                    title: "Super Feirão",
-                    startDate: "01/01/21",
-                    endDate: "01/01/22",
-                  ),
-                  ListItem(
-                    title: "Super Feirão",
-                    startDate: "01/01/21",
-                    endDate: "01/01/22",
-                  ),
-                  ListItem(
-                    title: "Super Feirão",
-                    startDate: "01/01/21",
-                    endDate: "01/01/22",
-                  ),
-                  ListItem(
-                    title: "Super Feirão",
-                    startDate: "01/01/21",
-                    endDate: "01/01/22",
-                  ),
-                  ListItem(
-                    title: "Super Feirão",
-                    startDate: "01/01/21",
-                    endDate: "01/01/22",
-                  ),
-                ],
-              ),
+              child: const PeriodsListBuilder(),
             ),
           ),
           const SizedBox(height: 10),

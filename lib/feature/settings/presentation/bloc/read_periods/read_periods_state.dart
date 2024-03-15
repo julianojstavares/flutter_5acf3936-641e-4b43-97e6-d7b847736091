@@ -2,8 +2,6 @@ import '../../../../../core/domain/entities/period_entity.dart';
 
 sealed class ReadPeriodsState {}
 
-final class ReadPeriodInitial extends ReadPeriodsState {}
-
 final class ReadPeriodLoading extends ReadPeriodsState {}
 
 final class ReadPeriodError extends ReadPeriodsState {

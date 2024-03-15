@@ -12,7 +12,7 @@ class ReadPeriodsBloc extends Bloc<ReadPeriodsEvent, ReadPeriodsState> {
 
   ReadPeriodsBloc({required ReadPeriodsUseCase readPeriodsUseCase})
       : _readPeriodsUseCase = readPeriodsUseCase,
-        super(ReadPeriodInitial()) {
+        super(ReadPeriodLoading()) {
     on<PeriodsReaded>(_onPeriodsReaded);
   }
 
@@ -20,8 +20,6 @@ class ReadPeriodsBloc extends Bloc<ReadPeriodsEvent, ReadPeriodsState> {
     PeriodsReaded event,
     Emitter<ReadPeriodsState> emit,
   ) async {
-    emit(ReadPeriodLoading());
-
     final List<PeriodEntity> periods;
 
     try {
