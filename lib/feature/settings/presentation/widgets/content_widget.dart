@@ -34,7 +34,10 @@ class ContentWidget extends StatelessWidget {
                 color: const Color.fromRGBO(245, 246, 250, 1),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const PeriodsListBuilder(),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: PeriodsListBuilder(),
+              ),
             ),
           ),
           const SizedBox(height: 10),
