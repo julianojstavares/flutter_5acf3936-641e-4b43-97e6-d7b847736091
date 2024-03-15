@@ -39,6 +39,11 @@ class EditPeriodButton extends StatelessWidget {
       },
       builder: (context, state) => switch (state) {
         UpdatePeriodInitial() => FilledButton(
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(
+                Color.fromRGBO(15, 39, 139, 1),
+              ),
+            ),
             onPressed: () => submitController.editPeriod(
               formKey,
               dialogCubit,

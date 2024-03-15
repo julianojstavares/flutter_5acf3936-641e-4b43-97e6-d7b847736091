@@ -14,6 +14,7 @@ class SignInBloc extends Bloc<SigninEvent, SigninState> {
       : _signInUseCase = signInUseCase,
         super(SigninInitial()) {
     on<SignInSucceeded>(_onSignInSucceeded);
+    on<SignInRetried>(_onSignInRetried);
   }
 
   void _onSignInSucceeded(
@@ -34,5 +35,12 @@ class SignInBloc extends Bloc<SigninEvent, SigninState> {
     }
 
     emit(SigninSuccess(user: user));
+  }
+
+  void _onSignInRetried(
+    SignInRetried event,
+    Emitter<SigninState> emit,
+  ) {
+    emit(SigninInitial());
   }
 }

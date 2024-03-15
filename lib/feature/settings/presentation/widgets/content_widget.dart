@@ -55,7 +55,13 @@ class ContentWidget extends StatelessWidget {
                     Color.fromRGBO(15, 39, 139, 1),
                   ),
                 ),
-                child: const AutoSizeText("Adicionar Período"),
+                child: const AutoSizeText(
+                  "Adicionar Período",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                  ),
+                ),
               ),
             ],
           ),

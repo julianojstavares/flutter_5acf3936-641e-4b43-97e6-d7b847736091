@@ -23,7 +23,11 @@ class FooterWidget extends StatelessWidget {
       subtitle: Row(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              // getIt.get<SignInBloc>().add(SignInRetried());
+              // getIt.unregister(instanceName: "user");
+              // context.replaceRoute(const AuthRoute());
+            },
             child: const AutoSizeText(
               "Sair",
               style: TextStyle(

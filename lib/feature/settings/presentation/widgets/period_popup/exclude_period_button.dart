@@ -48,6 +48,11 @@ class ExcludePeriodButton extends StatelessWidget {
       },
       builder: (context, state) => switch (state) {
         DeletePeriodInitial() => FilledButton(
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(
+                Color.fromRGBO(255, 0, 0, 1),
+              ),
+            ),
             onPressed: () => deletePeriodBloc.add(
               PeriodDeleted(periodID: period.id),
             ),

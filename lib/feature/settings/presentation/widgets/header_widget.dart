@@ -46,7 +46,13 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AutoSizeText("Apelido"),
+                const AutoSizeText(
+                  "Apelido",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 11,
+                  ),
+                ),
                 TextField(
                   controller: nicknameController,
                   decoration: const InputDecoration(
