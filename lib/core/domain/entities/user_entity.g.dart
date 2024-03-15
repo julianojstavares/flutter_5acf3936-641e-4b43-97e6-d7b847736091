@@ -22,14 +22,13 @@ class UserEntityAdapter extends TypeAdapter<UserEntity> {
       fields[3] as String,
       nickname: fields[2] as String?,
       imgProfilePath: fields[4] as String?,
-      periods: (fields[5] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, UserEntity obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -39,9 +38,7 @@ class UserEntityAdapter extends TypeAdapter<UserEntity> {
       ..writeByte(3)
       ..write(obj.password)
       ..writeByte(4)
-      ..write(obj.imgProfilePath)
-      ..writeByte(5)
-      ..write(obj.periods);
+      ..write(obj.imgProfilePath);
   }
 
   @override

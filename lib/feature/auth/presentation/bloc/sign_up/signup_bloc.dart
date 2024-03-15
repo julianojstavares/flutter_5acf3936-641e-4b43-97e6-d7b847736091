@@ -30,7 +30,6 @@ class SignUpBloc extends Bloc<SignupEvent, SignupState> {
       uniqueID.v4(),
       event.username,
       event.password,
-      periods: [],
     );
 
     try {

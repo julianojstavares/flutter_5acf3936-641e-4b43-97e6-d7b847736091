@@ -22,7 +22,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<void> signIn(String username, String password) async {
-    _hiveSource.validateInput(username, password);
+  Future<UserEntity> signIn(String username, String password) async {
+    return _hiveSource.returnUser(username, password);
   }
 }

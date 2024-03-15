@@ -28,7 +28,7 @@ class AuthSourceHive {
     periodsDB.clear();
   }
 
-  void validateInput(String username, String password) {
+  UserEntity returnUser(String username, String password) {
     final usersDB = Hive.box<UserEntity>("users");
 
     bool usernameExists = usersDB.values.any(
@@ -42,6 +42,8 @@ class AuthSourceHive {
     );
 
     if (user.password != password) throw Exception("Senha inválida");
+
+    return user;
   }
 
   void createPeriod(PeriodEntity period) {
@@ -51,7 +53,7 @@ class AuthSourceHive {
 
   List<PeriodEntity> returnUserPeriods(String userID) {
     final periodsDB = Hive.box<PeriodEntity>("periods");
-    
+
     final periods = periodsDB.values
         .where(
           (period) => period.userID == userID,

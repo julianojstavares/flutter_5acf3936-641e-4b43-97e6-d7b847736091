@@ -19,9 +19,11 @@ class UserEntity extends HiveObject {
   @HiveField(4)
   String? imgProfilePath;
 
-  @HiveField(5)
-  List<String> periods;
-
-  UserEntity(this.id, this.username, this.password,
-      {this.nickname, this.imgProfilePath, required this.periods});
+  UserEntity(
+    this.id,
+    this.username,
+    this.password, {
+    this.nickname,
+    this.imgProfilePath,
+  });
 }

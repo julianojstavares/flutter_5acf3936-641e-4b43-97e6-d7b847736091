@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:frontend/feature/auth/presentation/bloc/sign_in/signin_event.dart';
+import 'package:frontend/feature/auth/presentation/bloc/sign_in/signup_bloc.dart';
 
+import '../../../../core/dependency_injection/service_locator.dart';
 import '../cubit/view_cubit.dart';
 
 class SignInForm extends StatefulWidget {
@@ -49,7 +52,20 @@ class _SignInFormState extends State<SignInForm> {
                 bool? isFormValid = _formKey.currentState?.validate();
 
                 if (isFormValid!) {
-                  log(name:"SignInForm", _formKey.currentState!.instantValue.toString());
+                  _formKey.currentState!.save();
+                  final usrObj = _formKey.currentState!.value;
+
+                  log(name: "SignInForm", "$usrObj");
+
+                  final username = usrObj['username'] as String;
+                  final password = usrObj['password'] as String;
+
+                  getIt.get<SignInBloc>().add(
+                        SignInSucceeded(
+                          username: username,
+                          password: password,
+                        ),
+                      );
                 }
               },
               child: const AutoSizeText("Entrar"),
