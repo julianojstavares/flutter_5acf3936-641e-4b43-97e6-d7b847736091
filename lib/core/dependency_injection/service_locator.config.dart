@@ -37,6 +37,16 @@ import '../../feature/settings/domain/use_cases/update_period_use_case.dart'
     as _i15;
 import '../../feature/settings/domain/use_cases/update_user_use_case.dart'
     as _i16;
+import '../../feature/settings/presentation/bloc/create_period/create_period_bloc.dart'
+    as _i23;
+import '../../feature/settings/presentation/bloc/delete_period/delete_period_bloc.dart'
+    as _i24;
+import '../../feature/settings/presentation/bloc/read_periods/read_periods_bloc.dart'
+    as _i20;
+import '../../feature/settings/presentation/bloc/update_period/update_period_bloc.dart'
+    as _i21;
+import '../../feature/settings/presentation/bloc/update_user/update_user_bloc.dart'
+    as _i22;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -77,6 +87,16 @@ extension GetItInjectableX on _i1.GetIt {
         iSettingsRepository: gh<_i10.ISettingsRepository>()));
     gh.factory<_i19.DeletePeriodUseCase>(() => _i19.DeletePeriodUseCase(
         settingsRepository: gh<_i10.ISettingsRepository>()));
+    gh.lazySingleton<_i20.ReadPeriodsBloc>(() => _i20.ReadPeriodsBloc(
+        readPeriodsUseCase: gh<_i12.ReadPeriodsUseCase>()));
+    gh.lazySingleton<_i21.UpdatePeriodBloc>(() => _i21.UpdatePeriodBloc(
+        updatePeriodUseCase: gh<_i15.UpdatePeriodUseCase>()));
+    gh.lazySingleton<_i22.UpdateUserBloc>(() =>
+        _i22.UpdateUserBloc(updateUserUseCase: gh<_i16.UpdateUserUseCase>()));
+    gh.lazySingleton<_i23.CreatePeriodBloc>(() => _i23.CreatePeriodBloc(
+        createPeriodUseCase: gh<_i18.CreatePeriodUseCase>()));
+    gh.lazySingleton<_i24.DeletePeriodBloc>(() => _i24.DeletePeriodBloc(
+        deletePeriodUseCase: gh<_i19.DeletePeriodUseCase>()));
     return this;
   }
 }
