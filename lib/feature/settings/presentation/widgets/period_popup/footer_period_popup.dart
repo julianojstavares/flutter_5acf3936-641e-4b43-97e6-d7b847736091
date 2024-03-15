@@ -41,6 +41,7 @@ class FooterPeriodPopUp extends StatelessWidget {
               EditPeriodButton(
                 formKey: formKey,
                 dialogCubit: dialogCubit,
+                periodID: state.period!.id,
               ),
             ],
           ),

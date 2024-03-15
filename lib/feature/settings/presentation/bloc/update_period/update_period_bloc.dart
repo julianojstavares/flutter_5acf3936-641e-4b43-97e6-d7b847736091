@@ -26,9 +26,12 @@ class UpdatePeriodBloc extends Bloc<UpdatePeriodEvent, UpdatePeriodState> {
       await _updatePeriodUseCase.call(periodUpdated: event.periodUpdated);
     } catch (e) {
       emit(UpdatePeriodError(message: "$e"));
+      await Future.delayed(const Duration(seconds: 3));
+      emit(UpdatePeriodInitial());
       return;
     }
 
     emit(UpdatePeriodSuccess());
+    emit(UpdatePeriodInitial());
   }
 }
