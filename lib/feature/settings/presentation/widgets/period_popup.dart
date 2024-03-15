@@ -3,13 +3,13 @@ import 'dart:developer';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:frontend/core/dependency_injection/service_locator.dart';
-import 'package:frontend/core/domain/entities/user_entity.dart';
-import 'package:frontend/feature/settings/presentation/bloc/create_period/create_period_bloc.dart';
-import 'package:frontend/feature/settings/presentation/bloc/create_period/create_period_event.dart';
-import 'package:frontend/feature/settings/presentation/bloc/read_periods/read_periods_bloc.dart';
-import 'package:frontend/feature/settings/presentation/bloc/read_periods/read_periods_event.dart';
 
+import '../../../../core/dependency_injection/service_locator.dart';
+import '../../../../core/domain/entities/user_entity.dart';
+import '../bloc/create_period/create_period_bloc.dart';
+import '../bloc/create_period/create_period_event.dart';
+import '../bloc/read_periods/read_periods_bloc.dart';
+import '../bloc/read_periods/read_periods_event.dart';
 import '../cubit/dialog_cubit.dart';
 import 'period_form.dart';
 
