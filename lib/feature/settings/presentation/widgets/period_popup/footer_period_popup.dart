@@ -36,6 +36,7 @@ class FooterPeriodPopUp extends StatelessWidget {
               ExcludePeriodButton(
                 formKey: formKey,
                 dialogCubit: dialogCubit,
+                period: state.period!,
               ),
               EditPeriodButton(
                 formKey: formKey,

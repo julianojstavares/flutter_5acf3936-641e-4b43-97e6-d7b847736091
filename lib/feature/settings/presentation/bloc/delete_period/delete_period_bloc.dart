@@ -26,9 +26,12 @@ class DeletePeriodBloc extends Bloc<DeletePeriodEvent, DeletePeriodState> {
       await _deletePeriodUseCase.call(periodID: event.periodID);
     } catch (e) {
       emit(DeletePeriodError(message: "$e"));
+      await Future.delayed(const Duration(seconds: 3));
+      emit(DeletePeriodInitial());
       return;
     }
 
     emit(DeletePeriodSuccess());
+    emit(DeletePeriodInitial());
   }
 }
