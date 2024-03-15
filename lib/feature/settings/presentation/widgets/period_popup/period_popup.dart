@@ -39,6 +39,7 @@ class _PeriodPopUpState extends State<PeriodPopUp> {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Material(
+                color: Colors.white,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

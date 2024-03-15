@@ -46,6 +46,13 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(15, 39, 139, 1),
+          brightness: Brightness.light,
+        ),
+      ),
       routerConfig: _appRouter.config(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
