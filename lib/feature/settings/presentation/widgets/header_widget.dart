@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/core/domain/entities/user_entity.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../../core/dependency_injection/service_locator.dart';
 
 class HeaderWidget extends StatefulWidget {
   const HeaderWidget({
@@ -18,25 +21,42 @@ class HeaderWidget extends StatefulWidget {
 class _HeaderWidgetState extends State<HeaderWidget> {
   final ImagePicker imgPicker = ImagePicker();
   XFile? imgPicked;
+  String? profileImgPath;
+  String? nickname;
+
+  final nicknameController = TextEditingController();
+
+  final user = getIt.get<UserEntity>(instanceName: "user");
+
+  @override
+  void initState() {
+    super.initState();
+    profileImgPath = user.imgProfilePath;
+    nickname = user.nickname;
+    if (nickname != null) nicknameController.text = nickname!;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Flexible(
+        Flexible(
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText("Apelido"),
+                const AutoSizeText("Apelido"),
                 TextField(
-                  decoration: InputDecoration(
+                  controller: nicknameController,
+                  decoration: const InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                     isDense: true,
                     border: OutlineInputBorder(),
                   ),
+                  onEditingComplete: () =>
+                      user.nickname = nicknameController.text,
                 ),
               ],
             ),
@@ -51,8 +71,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           child: Row(
             children: [
               CircleAvatar(
-                foregroundImage: imgPicked != null
-                    ? FileImage(File(imgPicked!.path)) as ImageProvider<Object>?
+                foregroundImage: profileImgPath != null
+                    ? FileImage(File(profileImgPath!)) as ImageProvider<Object>?
                     : const AssetImage("assets/images/profile.png"),
                 radius: 25,
               ),
@@ -82,6 +102,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     await newFile.delete();
                     tmpFile.copy(newFilePath);
                   }
+
+                  user.imgProfilePath = newFilePath;
 
                   setState(() {});
                 },
