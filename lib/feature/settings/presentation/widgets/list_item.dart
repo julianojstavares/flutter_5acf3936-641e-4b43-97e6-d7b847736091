@@ -1,20 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../core/domain/entities/period_entity.dart';
+import '../cubit/dialog_cubit.dart';
+import '../cubit/period_popup_cubit/period_popup_cubit.dart';
 
 class ListItem extends StatelessWidget {
-  final String title;
-  final String startDate;
-  final String endDate;
+  final PeriodEntity period;
 
   const ListItem({
     super.key,
-    required this.title,
-    required this.startDate,
-    required this.endDate,
+    required this.period,
   });
 
   @override
   Widget build(BuildContext context) {
+    final title = period.title;
+    final datePattern = DateFormat('dd/MM/yy');
+    final startDate = datePattern.format(period.startDate);
+    final endDate = datePattern.format(period.endDate);
+
     return FilledButton(
       style: const ButtonStyle(
         padding: MaterialStatePropertyAll(
@@ -29,7 +36,10 @@ class ListItem extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.read<DialogCubit>().openDialog();
+        context.read<PeriodPopUpCubit>().showEditState(period);
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
